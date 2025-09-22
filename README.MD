@@ -46,7 +46,7 @@
 ---
 
 ## 🔗 Get Started
-- Visit the application: [Your Website URL]  
+- Visit the application: [\[Your Website URL\]](https://prompt-engineer-lecture.vercel.app/)  
 - Start learning and generating prompts today!
 
 ---
