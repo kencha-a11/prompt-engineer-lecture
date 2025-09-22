@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Prompt Engineering Masterclass</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- FIXED: Using consistent FontAwesome 6.4.0 for all icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">">
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <!-- FIXED: Enhanced floating navigation with progress bar -->
+    <div class="floating-nav">
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-text" id="progressText">0%</span>
+        </div>
+        <!-- FIXED: Theme toggle with proper icons -->
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+            🌙
+        </button>
+    </div>
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <!-- FIXED: Two-line header for desktop -->
+            <h1><span class="hero-title-text">🚀 Prompt Engineering Masterclass</span></h1>
+            <p class="hero-subtitle">Master the art of AI communication with advanced techniques, interactive tools, and real-world examples</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="generateAdvancedPDF()">
+                    <i class="fas fa-download"></i> Download Complete Guide
+                </button>
+                <a href="#content" class="btn btn-secondary">
+                    <i class="fas fa-rocket"></i> Start Learning
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content" id="content">
+        <header class="content-header">
+            <div class="container">
+                <h2><i class="fas fa-target"></i> Complete Interactive Learning Experience</h2>
+                <p>From basics to advanced techniques with hands-on tools</p>
+            </div>
+        </header>
+
+        <!-- FIXED: Navigation with proper section linking -->
+        <nav class="content-nav">
+            <div class="container">
+                <div class="nav-tabs">
+                    <div class="nav-tab active" onclick="toggleSection('foundations')">
+                        <i class="fas fa-foundation"></i> Foundation
+                    </div>
+                    <div class="nav-tab" onclick="toggleSection('crafting')">
+                        <i class="fas fa-paint-brush"></i> Crafting
+                    </div>
+                    <div class="nav-tab" onclick="toggleSection('advanced')">
+                        <i class="fas fa-brain"></i> Advanced
+                    </div>
+                    <div class="nav-tab" onclick="toggleSection('examples')">
+                        <i class="fas fa-lightbulb"></i> Examples
+                    </div>
+                    <div class="nav-tab" onclick="toggleSection('tools')">
+                        <i class="fas fa-toolbox"></i> Tools
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content-body">
+            <div class="container">
+
+                <!-- FIXED: Collapsible Foundations Section -->
+                <div id="foundations-section" class="section expanded">
+                    <div class="section-header" onclick="toggleSection('foundations')">
+                        <h2 class="section-title">
+                            <i class="fas fa-foundation"></i> ✨ Foundation — Core Principles
+                        </h2>
+                        <i class="fas fa-chevron-down section-toggle"></i>
+                    </div>
+                    <div class="section-content">
+                        <div class="section-card">
+                            <h3><i class="fas fa-robot"></i> 🤖 What is a Prompt?</h3>
+                            <p>A prompt is a short input (instructions + context) given to a Large Language Model (LLM) to produce a desired response.</p>
+                            
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span>Prompt Flow</span>
+                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                                <pre>Prompt → LLM Processing → Response</pre>
+                            </div>
+
+                            <h3><i class="fas fa-target"></i> 🎯 Core Principles</h3>
+                            <p>Prompting controls token probability distributions through:</p>
+                            <ul>
+                                <li><strong>Clear instructions</strong> - Be specific about what you want</li>
+                                <li><strong>Relevant context</strong> - Provide necessary background information</li>
+                                <li><strong>Proper structure</strong> - Organize your prompt logically</li>
+                                <li><strong>Examples</strong> - Show the model what good output looks like</li>
+                            </ul>
+
+                            <div class="interactive-template">
+                                <h4><i class="fas fa-lightbulb"></i> Key Insight</h4>
+                                <p><strong>AI is not creativity itself — it magnifies human creativity.</strong></p>
+                                <div style="background: linear-gradient(135deg, #fbbf24, #f59e0b); color: white; border: none; padding: 1rem; border-radius: 10px; text-align: center; font-weight: 600; font-size: 1.2rem; margin: 1rem 0;">
+                                    <i class="fas fa-plus"></i> <strong>Formula: AI + Human = Awesome!</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FIXED: Collapsible Crafting Section -->
+                <div id="crafting-section" class="section collapsed">
+                    <div class="section-header" onclick="toggleSection('crafting')">
+                        <h2 class="section-title">
+                            <i class="fas fa-paint-brush"></i> 🎯 Crafting — Prompt Mastery
+                        </h2>
+                        <i class="fas fa-chevron-down section-toggle"></i>
+                    </div>
+                    <div class="section-content">
+                        <div class="section-card">
+                            <h3><i class="fas fa-book-open"></i> 📝 The Storytelling Approach</h3>
+                            <p>Think of prompt crafting like cooking:</p>
+                            <ul>
+                                <li><strong>Ingredients</strong> = Context and information</li>
+                                <li><strong>Recipe Steps</strong> = Clear instructions</li>
+                                <li><strong>Taste Testing</strong> = Iterative refinement</li>
+                            </ul>
+
+                            <div class="advanced-techniques">
+                                <div class="technique-card">
+                                    <div class="technique-icon">
+                                        <i class="fas fa-eye"></i>
+                                    </div>
+                                    <h4>KISS Principle</h4>
+                                    <p>Keep It Simple & Structured. Generic prompts lead to generic answers.</p>
+                                </div>
+                                <div class="technique-card">
+                                    <div class="technique-icon">
+                                        <i class="fas fa-target"></i>
+                                    </div>
+                                    <h4>Precision Targeting</h4>
+                                    <p>Well-organized inputs consistently produce high-quality outputs.</p>
+                                </div>
+                                <div class="technique-card">
+                                    <div class="technique-icon">
+                                        <i class="fas fa-sync"></i>
+                                    </div>
+                                    <h4>Iterative Process</h4>
+                                    <p>Draft → Test → Refine → Repeat until perfect.</p>
+                                </div>
+                            </div>
+
+                            <h3><i class="fas fa-tools"></i> Interactive C.O.S.T.A.R.S Template Builder</h3>
+                            <div class="interactive-template">
+                                <div class="template-form">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-info-circle"></i> Context (Background/Scope)
+                                        </label>
+                                        <textarea class="form-input form-textarea" id="context" placeholder="Describe the background information and scope..."></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-bullseye"></i> Objective (Goal/Task)
+                                        </label>
+                                        <textarea class="form-input form-textarea" id="objective" placeholder="What do you want to achieve?"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-user-tie"></i> Style/Role (Persona)
+                                        </label>
+                                        <input type="text" class="form-input" id="style" placeholder="e.g., Expert Data Scientist, Creative Writer...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-volume-up"></i> Tone
+                                        </label>
+                                        <input type="text" class="form-input" id="tone" placeholder="e.g., Professional, Casual, Humorous...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-users"></i> Audience
+                                        </label>
+                                        <input type="text" class="form-input" id="audience" placeholder="e.g., Beginners, Executives, Technical team...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-file-alt"></i> Response Format
+                                        </label>
+                                        <input type="text" class="form-input" id="response" placeholder="e.g., Markdown, Bullet points, Step-by-step...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-list-ol"></i> Steps/Constraints
+                                        </label>
+                                        <textarea class="form-input form-textarea" id="steps" placeholder="Any specific steps or constraints..."></textarea>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="generatePrompt()" style="margin-top: 1rem;">
+                                        <i class="fas fa-magic"></i> Generate Prompt
+                                    </button>
+                                </div>
+                                <div class="generated-prompt" id="generatedPrompt" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FIXED: Collapsible Advanced Section -->
+                <div id="advanced-section" class="section collapsed">
+                    <div class="section-header" onclick="toggleSection('advanced')">
+                        <h2 class="section-title">
+                            <i class="fas fa-brain"></i> 🧠 Advanced — Expert Techniques
+                        </h2>
+                        <i class="fas fa-chevron-down section-toggle"></i>
+                    </div>
+                    <div class="section-content">
+                        <div class="section-card">
+                            <h3><i class="fas fa-link"></i> Chain-of-Thought (CoT)</h3>
+                            <p>Ask the model to show intermediate reasoning steps. This dramatically improves accuracy for complex tasks.</p>
+                            
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span>CoT Example</span>
+                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                                <pre>Problem: A company's revenue increased by 25% in Q1, then decreased by 15% in Q2. 
+If they started with $1M, what's their Q2 revenue?
+
+Think step-by-step:
+1) Q1 revenue = $1M × 1.25 = $1.25M
+2) Q2 revenue = $1.25M × 0.85 = $1.0625M
+3) Final answer: $1,062,500</pre>
+                            </div>
+
+                            <h3><i class="fas fa-network-wired"></i> Advanced Prompting Arsenal</h3>
+                            <div class="advanced-techniques">
+                                <div class="technique-card" onclick="showTechniqueDetail('skeleton')">
+                                    <div class="technique-icon">
+                                        <i class="fas fa-bone"></i>
+                                    </div>
+                                    <h4>Skeleton of Thought</h4>
+                                    <p>Create a basic structure first, then fill in details progressively.</p>
+                                </div>
+                                <div class="technique-card" onclick="showTechniqueDetail('tree')">
+                                    <div class="technique-icon">
+                                        <i class="fas fa-sitemap"></i>
+                                    </div>
+                                    <h4>Tree of Thought</h4>
+                                    <p>Explore multiple reasoning paths simultaneously for complex problems.</p>
+                                </div>
+                                <div class="technique-card" onclick="showTechniqueDetail('meta')">
+                                    <div class="technique-icon">
+                                        <i class="fas fa-layer-group"></i>
+                                    </div>
+                                    <h4>Meta-Prompting</h4>
+                                    <p>Create prompts that help generate better prompts.</p>
+                                </div>
+                                <div class="technique-card" onclick="showTechniqueDetail('persona')">
+                                    <div class="technique-icon">
+                                        <i class="fas fa-masks-theater"></i>
+                                    </div>
+                                    <h4>Multi-Persona</h4>
+                                    <p>Have multiple experts collaborate on a single problem.</p>
+                                </div>
+                                <div class="technique-card" onclick="showTechniqueDetail('least')">
+                                    <div class="technique-icon">
+                                        <i class="fas fa-stairs"></i>
+                                    </div>
+                                    <h4>Least-to-Most</h4>
+                                    <p>Break complex problems into simpler sub-problems.</p>
+                                </div>
+                                <div class="technique-card" onclick="showTechniqueDetail('stepback')">
+                                    <div class="technique-icon">
+                                        <i class="fas fa-step-backward"></i>
+                                    </div>
+                                    <h4>Step-Back</h4>
+                                    <p>Ask broader questions to gain better perspective.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FIXED: Collapsible Examples Section -->
+                <div id="examples-section" class="section collapsed">
+                    <div class="section-header" onclick="toggleSection('examples')">
+                        <h2 class="section-title">
+                            <i class="fas fa-lightbulb"></i> 💡 Examples — Real-World Cases
+                        </h2>
+                        <i class="fas fa-chevron-down section-toggle"></i>
+                    </div>
+                    <div class="section-content">
+                        <div class="section-card">
+                            <div class="example-carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-track" id="carouselTrack">
+                                        <div class="carousel-item">
+                                            <h4><i class="fas fa-briefcase"></i> Business Strategy Prompt</h4>
+                                            <div class="code-block">
+                                                <div class="code-header">
+                                                    <span>Product Manager Brief</span>
+                                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                                </div>
+                                                <pre>You are a Senior Product Manager at a Fortune 500 tech company.
+
+Context:
+- Product: AI-powered project management tool for remote teams
+- Market: North America & Europe, companies 50-500 employees
+- Competition: Asana, Monday.com, Notion
+
+Objective:
+Create a comprehensive product brief including:
+- 5 core features with technical requirements
+- Success metrics (KPIs) for each feature
+- 3 major user pain points we solve
+- Go-to-market strategy outline
+
+Style: Executive-level, data-driven
+Tone: Confident but realistic
+Audience: C-level executives and investors
+
+Response Format:
+- Executive Summary (3 sentences)
+- Features & KPIs (table format)
+- Market Analysis (bullet points)
+- Next Steps (numbered list)
+
+Constraints:
+- Keep under 2 pages
+- Include at least 3 market statistics
+- Reference competitor analysis</pre>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <h4><i class="fas fa-calculator"></i> Educational Content</h4>
+                                            <div class="code-block">
+                                                <div class="code-header">
+                                                    <span>Math Tutor with CoT</span>
+                                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                                </div>
+                                                <pre>You are an experienced math tutor specializing in calculus.
+
+Context: Student struggling with derivative applications
+
+Problem: A ball is thrown upward with initial velocity 64 ft/s from a height of 6 ft. 
+The height function is h(t) = -16t² + 64t + 6
+
+Find: When does the ball reach maximum height and what is that height?
+
+Instructions:
+1. Show all work step-by-step
+2. Explain the reasoning behind each step
+3. Use simple language a high school student can understand
+4. Include a quick verification of the answer
+5. Add a real-world interpretation
+
+Teaching Style: Patient, encouraging, methodical
+Response Format: Step-by-step solution with explanations</pre>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <h4><i class="fas fa-palette"></i> Creative Design</h4>
+                                            <div class="code-block">
+                                                <div class="code-header">
+                                                    <span>Multi-Persona Design Review</span>
+                                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                                </div>
+                                                <pre>You are a design review panel consisting of three experts:
+👤 Expert A: Senior UX Researcher (10+ years experience)
+👤 Expert B: Visual Design Lead (specializes in mobile apps)  
+👤 Expert C: Accessibility Consultant (WCAG expert)
+
+Context: 
+Mobile banking app onboarding flow redesign
+- 8 screens currently, users drop off at screen 3 (45% exit rate)
+- Target: Young professionals aged 25-35
+- Must comply with banking security standards
+
+Task for each expert:
+1. Identify top 3 UX issues from your specialty
+2. Provide specific, actionable recommendations
+3. Estimate implementation difficulty (Low/Medium/High)
+
+Final Step: 
+Synthesize all feedback into 5 prioritized improvements
+
+Format: 
+- Individual expert analysis
+- Consolidated recommendations
+- Implementation roadmap
+
+Tone: Professional, constructive, specific</pre>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <h4><i class="fas fa-code"></i> Technical Documentation</h4>
+                                            <div class="code-block">
+                                                <div class="code-header">
+                                                    <span>API Documentation</span>
+                                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                                </div>
+                                                <pre>You are a Senior Technical Writer specializing in API documentation.
+
+Context:
+- REST API for e-commerce platform
+- Audience: Frontend developers (intermediate level)
+- Integration: Payment processing endpoints
+
+Objective:
+Create comprehensive documentation for the /payments/process endpoint
+
+Include:
+- Endpoint overview and purpose
+- Authentication requirements  
+- Request/response examples (JSON)
+- Error codes and handling
+- Rate limiting information
+- SDK code samples (JavaScript, Python)
+- Common integration patterns
+
+Style: Clear, concise, developer-friendly
+Format: Markdown with proper headings
+Tone: Professional but approachable
+
+Special Requirements:
+- Include security best practices
+- Add troubleshooting section
+- Provide real-world use cases</pre>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <h4><i class="fas fa-chart-line"></i> Data Analysis</h4>
+                                            <div class="code-block">
+                                                <div class="code-header">
+                                                    <span>Business Intelligence Report</span>
+                                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                                </div>
+                                                <pre>You are a Senior Data Analyst at a SaaS company.
+
+Context:
+- Q3 2024 user behavior data analysis
+- Product: Project management software
+- Focus: Feature adoption and user retention
+
+Dataset Summary:
+- 50K active users
+- 12 core features tracked
+- 90-day retention period
+- Segmented by plan type (Free, Pro, Enterprise)
+
+Analysis Requirements:
+1. Feature adoption rates by user segment
+2. Correlation between feature usage and retention  
+3. Identify power user behavior patterns
+4. Churn prediction indicators
+5. Revenue impact analysis
+
+Deliverable:
+Executive summary with actionable insights
+
+Format:
+- Key findings (bullet points)
+- Data visualizations (describe charts needed)
+- Strategic recommendations  
+- Next steps for product team
+
+Tone: Data-driven, confident, business-focused</pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-controls">
+                                    <button class="carousel-btn" onclick="previousExample()">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <button class="carousel-btn" onclick="nextExample()">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                                <div class="carousel-indicators" id="carouselIndicators"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FIXED: Collapsible Tools Section -->
+                <div id="tools-section" class="section collapsed">
+                    <div class="section-header" onclick="toggleSection('tools')">
+                        <h2 class="section-title">
+                            <i class="fas fa-toolbox"></i> 🛠️ Tools — Checklists & Library
+                        </h2>
+                        <i class="fas fa-chevron-down section-toggle"></i>
+                    </div>
+                    <div class="section-content">
+                        <div class="section-card">
+                            <h3><i class="fas fa-rocket"></i> Workflow Optimization</h3>
+                            <div class="checklist">
+                                <h4>🚀 Professional Workflow Checklist</h4>
+                                <ol>
+                                    <li>Write first draft using C.O.S.T.A.R.S framework</li>
+                                    <li>Test with target LLM → collect initial outputs</li>
+                                    <li>Analyze results: format, tone, accuracy, completeness</li>
+                                    <li>Refine iteratively: add examples, constraints, personas</li>
+                                    <li>A/B test variations for consistency</li>
+                                    <li>Document successful patterns in your Prompt Library</li>
+                                    <li>Create templates for recurring use cases</li>
+                                    <li>Set up feedback loops for continuous improvement</li>
+                                </ol>
+                            </div>
+
+                            <h3><i class="fas fa-check-double"></i> Quality Assurance</h3>
+                            <div class="checklist">
+                                <h4>✅ Master Quality Checklist</h4>
+                                <ul>
+                                    <li><strong>Clarity:</strong> Is the objective crystal clear and unambiguous?</li>
+                                    <li><strong>Context:</strong> Have you provided sufficient background information?</li>
+                                    <li><strong>Role:</strong> Is the AI persona/expertise level specified?</li>
+                                    <li><strong>Audience:</strong> Is the target audience clearly defined?</li>
+                                    <li><strong>Format:</strong> Is the desired output format explicitly requested?</li>
+                                    <li><strong>Examples:</strong> Are there 1-3 high-quality examples provided?</li>
+                                    <li><strong>Constraints:</strong> Are limitations and requirements specified?</li>
+                                    <li><strong>Logic:</strong> Is chain-of-thought requested for complex reasoning?</li>
+                                    <li><strong>Validation:</strong> Have you tested with multiple inputs?</li>
+                                    <li><strong>Documentation:</strong> Is this saved in your reusable library?</li>
+                                </ul>
+                            </div>
+
+                            <h3><i class="fas fa-exclamation-triangle"></i> Common Pitfalls to Avoid</h3>
+                            <div class="advanced-techniques">
+                                <div class="technique-card">
+                                    <div class="technique-icon" style="background: linear-gradient(135deg, var(--danger), #dc2626);">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                    <h4>Vague Instructions</h4>
+                                    <p><strong>Wrong:</strong> "Make it better"<br><strong>Right:</strong> "Improve readability by adding subheadings and bullet points"</p>
+                                </div>
+                                <div class="technique-card">
+                                    <div class="technique-icon" style="background: linear-gradient(135deg, var(--danger), #dc2626);">
+                                        <i class="fas fa-question"></i>
+                                    </div>
+                                    <h4>Missing Context</h4>
+                                    <p><strong>Wrong:</strong> "Write a report"<br><strong>Right:</strong> "Write a quarterly sales report for the executive team"</p>
+                                </div>
+                                <div class="technique-card">
+                                    <div class="technique-icon" style="background: linear-gradient(135deg, var(--danger), #dc2626);">
+                                        <i class="fas fa-eye-slash"></i>
+                                    </div>
+                                    <h4>Poor Examples</h4>
+                                    <p><strong>Wrong:</strong> Low-quality or irrelevant examples<br><strong>Right:</strong> 2-3 perfect examples that demonstrate desired output</p>
+                                </div>
+                            </div>
+
+                            <h3><i class="fas fa-database"></i> Building Your Prompt Library (IPL)</h3>
+                            <p>Create a systematic library of your best prompts for maximum productivity:</p>
+                            
+                            <div class="interactive-template">
+                                <h4><i class="fas fa-file-plus"></i> Prompt Library Template</h4>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span>IPL Entry Template</span>
+                                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                    </div>
+                                    <pre>📁 PROMPT TITLE: [Descriptive name]
+🎯 CATEGORY: [Business/Creative/Technical/Educational]
+📝 INTENT: [What this prompt accomplishes]
+🎭 PERSONA: [Role/expertise required]
+🎪 USE CASE: [When to use this prompt]
+📊 SUCCESS RATE: [Track performance]
+📚 CONTEXT TEMPLATE: [Fill-in-the-blank background]
+🎯 OBJECTIVE TEMPLATE: [Customizable goals]
+📋 FORMAT: [Standard output format]
+💡 EXAMPLES: [2-3 perfect examples]
+🔧 TUNING NOTES: [What works/doesn't work]
+📈 VARIATIONS: [Different versions for different needs]
+🕐 LAST UPDATED: [Keep it fresh]</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script rel="script" src="script.js"></script></script>
+</body>
+</html>
