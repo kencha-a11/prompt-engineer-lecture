@@ -52,3 +52,55 @@
 ---
 ##  For educational purpose only
 
+
+🚀 Update Changes
+✅ Fixes & Improvements
+Restored missing icons across the app.
+
+
+Added reading progress tracker — sections mark as read and show progress bar.
+
+
+Crafting upgrades:
+
+
+New Clear inputs button.
+
+
+Example prompts you can select and edit.
+
+
+Copy button now only appears for your created prompts.
+
+
+Removed copy button from “What is a prompt?” section.
+
+
+Fixed PDF export issue where special characters (€, £, Ø, etc.) looked broken.
+
+
+Adjusted bullet alignment & spacing in Core Principles and Storytelling Approach.
+
+
+📱 Mobile Experience
+Section tabs (Foundation, Crafting, Advanced, Examples, Tools) now take less space on small screens.
+
+
+Crafting input fields stay inside the container.
+
+
+Example previews are smaller and expandable.
+
+
+Removed extra spacing so content isn’t compressed.
+
+
+Overall layout now more responsive across devices.
+
+
+✨ New Features
+Advertisement section: “Start learning” button now links to Claude AI official site.
+
+
+Smooth scrolling for a cleaner navigation experience.
+
